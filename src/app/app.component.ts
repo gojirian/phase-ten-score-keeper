@@ -1,47 +1,11 @@
-import { Component, ViewChild } from '@angular/core';
-
-import { Platform, MenuController, Nav } from 'ionic-angular';
-
-import { StatusBar, Splashscreen } from 'ionic-native';
-
-import { RootPage } from '../pages/root/root';
-
+import { Component } from '@angular/core';
+import { IonApp, IonRouterOutlet } from '@ionic/angular/standalone';
 
 @Component({
-  templateUrl: 'app.html'
+  selector: 'app-root',
+  templateUrl: 'app.component.html',
+  imports: [IonApp, IonRouterOutlet],
 })
-export class MyApp {
-  @ViewChild(Nav) nav: Nav;
-
-  // make HelloIonicPage the root (or first) page
-  rootPage: any = RootPage;
-  pages: Array<{title: string, component: any}>;
-
-  constructor(
-    public platform: Platform,
-    public menu: MenuController
-  ) {
-    this.initializeApp();
-
-    // set our app's pages
-    this.pages = [
-      { title: 'Hello Ionic', component: RootPage }
-    ];
-  }
-
-  initializeApp() {
-    this.platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
-      StatusBar.styleDefault();
-      Splashscreen.hide();
-    });
-  }
-
-  openPage(page) {
-    // close the menu when clicking a link from the menu
-    this.menu.close();
-    // navigate to the new page if it is not the current page
-    this.nav.setRoot(page.component);
-  }
+export class AppComponent {
+  constructor() {}
 }

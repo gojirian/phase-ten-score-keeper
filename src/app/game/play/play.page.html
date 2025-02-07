@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Round {{ round }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list>
+    <ion-item button detail (click)="showPlayer(player)" *ngFor="let player of getPlayers()">
+      <ion-label>
+        <h2>{{ player.name }}</h2>
+        <p>Phase: {{ player.phase }}</p>
+      </ion-label>
+      <ion-note slot="end">Total: {{ player.total }}</ion-note>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="endRound()">End Round</ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="endGame()">End Game</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>
