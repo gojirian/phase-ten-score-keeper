@@ -1,0 +1,45 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Phase Ten Setup</ion-title>
+    <ion-buttons slot="end">
+      <ion-button color="primary" (click)="onBegin()" *ngIf="players.length > 1">
+        Play!
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-label>Setup</ion-label>
+  <ion-item>
+    <ion-label position="stacked">Phases</ion-label>
+    <ion-input [(ngModel)]="phases"></ion-input>
+  </ion-item>
+  <p>
+    <ion-label>Players</ion-label>
+    <ion-item>
+      <ion-label position="stacked">Name:</ion-label>
+      <ion-input
+        #player
+        [(ngModel)]="newPlayer.name"
+        (keydown.enter)="addPlayer()"
+        [disabled]="players.length >= 4"
+         ></ion-input>
+    </ion-item>
+    <ion-button (click)="addPlayer()" [disabled]="!newPlayer.name">
+      Add Player
+    </ion-button>
+  </p>
+
+  <ion-list>
+    <ion-item *ngFor="let player of players">
+      Name: {{ player.name }}
+      <ion-button slot="end" (click)="removePlayer(player)">
+        Remove
+      </ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>

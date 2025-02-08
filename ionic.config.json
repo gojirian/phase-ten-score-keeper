@@ -1,6 +1,7 @@
 {
-  "name": "phase10-results",
-  "app_id": "2685fe2b",
-  "v2": true,
-  "typescript": true
+  "name": "Phased",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
 }
